@@ -9,9 +9,14 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -43,10 +48,119 @@ public class Ventana extends JFrame{
 		this.setVisible(true);
 	}
 	
+	//Reglas generales de cada componente
+	
+			//Size
+			//location
+			//background
+			//string constructor
+	
+	
 	//Metodo para crear el panel
 	public void iniciarComponentes() {
-		this.login();
+		//this.login();
+		//this.registro();
 		
+		this.admin();
+		this.repaint();
+	}
+	
+	public void admin() {
+		
+		//Añadir un panel
+		JPanel adminPanel = new JPanel();
+		adminPanel.setSize(this.getWidth(),this.getHeight());
+		adminPanel.setLocation(0, 0);
+		adminPanel.setOpaque(true);
+		adminPanel.setBackground(Color.cyan);
+		adminPanel.setLayout(null);
+		
+		//Añadir una barra
+		JMenuBar menuBar = new JMenuBar();
+		
+		//Añadir una opcion
+		JMenu menuFile = new JMenu("Archivo");
+		
+		//Añadir un item
+		JMenuItem openItem = new JMenuItem("Abrir archivo...");
+		JMenuItem createItem = new JMenuItem("Crear archivo...");
+		
+		menuBar.add(menuFile);
+		menuFile.add(openItem);
+		menuFile.add(createItem);
+		
+		//Usuarios
+		JLabel userTag = new JLabel("Usuarios",0);
+		userTag.setSize(300, 80);
+		userTag.setFont(new Font ("Arial",Font.BOLD,24));
+		userTag.setForeground(Color.white);
+		userTag.setLocation(345, 20);
+		userTag.setOpaque(true);//Fondo a la etiqueta
+		userTag.setBackground(Color.black);
+		adminPanel.add(userTag);
+		
+		//Titulo total de usuarios
+		JLabel tittleWidget = new JLabel("Total de usuarios",0);
+		tittleWidget.setFont(new Font ("Arial",Font.BOLD,24));
+		tittleWidget.setBounds(40, 120, 300, 40);
+		tittleWidget.setForeground(Color.white);
+		adminPanel.add(tittleWidget);
+		
+		//Cantidad de usuarios
+		JLabel contentWidget = new JLabel("100",0);
+		contentWidget.setFont(new Font ("Arial",Font.BOLD,22));
+		contentWidget.setBounds(40, 160, 300, 40);
+		contentWidget.setForeground(Color.white);
+		adminPanel.add(contentWidget);
+		
+		//Background del total de usuarios
+		JLabel widget = new JLabel("");
+		widget.setBounds(40, 120, 300, 100);
+		widget.setOpaque(true);
+		widget.setBackground(Color.BLACK);
+		adminPanel.add(widget);
+		
+		//Botones
+		JButton download = new JButton("Exportar");
+		download.setBounds(730, 230, 100, 40);
+		adminPanel.add(download);
+		
+		JButton addUser = new JButton("Añadir");
+		addUser.setBounds(840, 230, 100, 40);
+		adminPanel.add(addUser);
+		
+		//Tabla
+		/*JLabel table = new JLabel();
+		table.setBounds(40, 300, 900, 300);
+		table.setOpaque(true);
+		table.setBackground(Color.BLACK);
+		adminPanel.add(table);
+		/*/
+		
+		String tableTittles[] = {"No.Control", "Nombre","Apellidos","Semestre","Promedio","Acciones"};
+		
+		String tableData[][]= {
+				{"No.Control", "Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control", "Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control", "Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control", "Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control", "Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control", "Nombre","Apellidos","Semestre","Promedio","Acciones"},
+				{"No.Control", "Nombre","Apellidos","Semestre","Promedio","Acciones"}
+		};
+		
+		JTable tableUsers = new JTable(tableData,tableTittles);
+		//tableUsers.setBounds(40, 400, 920, 40);
+		JScrollPane tableScroll = new JScrollPane(tableUsers);
+		tableScroll.setBounds(40, 300, 900, 100);
+		adminPanel.add(tableScroll);
+		
+		this.setJMenuBar(menuBar);
+		this.add(adminPanel);
+	}
+	
+	//Metodo del registro
+	public void registro() {
 		JPanel registro = new JPanel();
 		registro.setSize(this.getWidth(),this.getHeight());
 		registro.setBackground(Color.cyan);
@@ -145,8 +259,6 @@ public class Ventana extends JFrame{
 		registerButton.setFont(new Font("Arial",Font.BOLD,19));
 		registro.add(registerButton);
 		this.add(registro);
-		
-		this.repaint();
 	}
 	
 	//Mover todo el login aqui
@@ -155,15 +267,6 @@ public class Ventana extends JFrame{
 		login.setSize(this.getWidth()/2,this.getHeight());
 		login.setBackground(Color.blue);
 		login.setLayout(null);
-		
-		
-		//Reglas generales de cada componente
-		
-		//Size
-		//location
-		//background
-		//string constructor
-		
 		
 		//Componente para agregar string
 		JLabel login_tag = new JLabel("Acceder",0);
