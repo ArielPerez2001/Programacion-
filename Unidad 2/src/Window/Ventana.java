@@ -1,8 +1,12 @@
 package Window;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -32,7 +36,7 @@ public class Ventana extends JFrame{
 		
 		this.setLocation(200,200);
 				
-		this.setResizable(false);
+		this.setResizable(true);
 		
 		this.setTitle("Mi ventana");
 		
@@ -59,11 +63,65 @@ public class Ventana extends JFrame{
 	
 	//Metodo para crear el panel
 	public void iniciarComponentes() {
-		this.login();
+		//this.login();
 		//this.registro();
 		
-		//this.admin();
-		this.repaint();
+		//this.admin()
+		
+		this.calculadora();
+;		this.repaint();
+	}
+	
+	public void calculadora() {
+		this.setSize(500,650);
+		
+		//Panel
+		JPanel panel = new JPanel();
+		panel.setSize(this.getWidth(),this.getHeight());
+		panel.setBackground(Color.decode("#E16080"));
+		panel.setLayout( new BorderLayout() );
+		
+		//Display
+		JLabel text = new JLabel("100.00",4);
+		text.setOpaque(true);
+		text.setBackground(Color.white);
+		text.setFont(new Font ("calibri",Font.BOLD,30));
+		panel.add(text, BorderLayout.NORTH);
+		
+		JPanel center = new JPanel();
+		center.setBackground(Color.decode("#E16DD8"));
+		center.setLayout(new GridLayout(4,3,5,5));//(Filas,columnas,separacion,separacion)
+		panel.add(center, BorderLayout.CENTER);
+		
+		String buttons [] = {"7","8","9","6","5","4","3","2","1","0",".","/"};
+		for(int i = 0; i < 12; i++) {
+			JButton button = new JButton(buttons[i]);;
+			center.add(button);
+		}
+		
+		JPanel east = new JPanel();
+		east.setBackground(Color.decode("#D9976A"));
+		east.setLayout(new GridLayout(3,1,2,2));
+		panel.add(east, BorderLayout.EAST);
+		
+		String buttons2 [] = {"+","-","="};
+		for(int i = 0; i < 3; i++) {
+			JButton button = new JButton(buttons2[i]);
+			east.add(button);
+		}
+		
+		JPanel west = new JPanel();
+		west.setBackground(Color.DARK_GRAY);
+		west.setLayout( new BoxLayout(west,BoxLayout.Y_AXIS));
+		panel.add(west, BorderLayout.WEST);
+		
+		String buttons3 [] = {"MC","M+","*"};
+		for(int i = 0; i < 3; i++) {
+			JButton button = new JButton(buttons3[i]);
+			west.add(button);
+		}
+		this.add(panel);
+		
 	}
 	
 	public void admin() {
