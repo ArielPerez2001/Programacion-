@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -25,13 +26,13 @@ public class Ventana extends JFrame{
 	public Ventana() {
 		
 	
-		this.setSize(1000,750);
+		this.setSize(520,600);
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		this.setLocation(200,200);
 				
-		this.setResizable(true);
+		this.setResizable(false);
 		
 		this.setTitle("Mi ventana");
 		
@@ -58,10 +59,10 @@ public class Ventana extends JFrame{
 	
 	//Metodo para crear el panel
 	public void iniciarComponentes() {
-		//this.login();
+		this.login();
 		//this.registro();
 		
-		this.admin();
+		//this.admin();
 		this.repaint();
 	}
 	
@@ -264,65 +265,108 @@ public class Ventana extends JFrame{
 	//Mover todo el login aqui
 	public void login() {
 		JPanel login = new JPanel();
-		login.setSize(this.getWidth()/2,this.getHeight());
-		login.setBackground(Color.blue);
+		login.setSize(this.getWidth(),this.getHeight());
+		login.setBackground(Color.decode("#30508f"));
 		login.setLayout(null);
 		
-		//Componente para agregar string
-		JLabel login_tag = new JLabel("Acceder",0);
+		//User Login
+		JLabel login_tag = new JLabel("User Login",0);
 		login_tag.setSize(300, 80);
-		login_tag.setFont(new Font ("Arial",Font.BOLD,24));
+		login_tag.setFont(new Font ("Segoe UI Black",Font.BOLD,32));
 		login_tag.setForeground(Color.white);
-		login_tag.setLocation(100, 20);
-		login_tag.setOpaque(true);//Fondo a la etiqueta
-		login_tag.setBackground(Color.red);
+		login_tag.setLocation(105, 12);
 		login.add(login_tag);
 		
+		//MyAccount
+		JLabel myAccount = new JLabel("My Account",0);
+		myAccount.setBounds(150,120,220,40);
+		myAccount.setFont(new Font ("Segoe UI Black", Font.BOLD, 35));
+		myAccount.setForeground(Color.decode("#D9C943"));
+		login.add(myAccount);
 		
 		//Titulo
-		JLabel userName = new JLabel(" Nombre de usuario:");
-		userName.setBounds(170,120,180,40);
-		userName.setFont(new Font ("Agency FB", Font.BOLD, 25));
+		JLabel userName = new JLabel("Enter Your Username");
+		userName.setBounds(100,170,180,40);
+		userName.setFont(new Font ("Agency FB", Font.BOLD, 20));
+		userName.setForeground(Color.white);
 		login.add(userName);
 		
 		//Textbox del username
 		
 		JTextField typeUser = new JTextField();
-		typeUser.setBounds(100,170,300,35);
+		typeUser.setBounds(100,210,300,35);
 		typeUser.setOpaque(true);
 		typeUser.setBackground(Color.white);
 		login.add(typeUser);
+	
+		//Icono persona
+		JLabel person = new JLabel();
+		person.setIcon(new ImageIcon(getClass().getResource("persona.png")));
+		person.setBounds(60, 218, 20, 20);
+		login.add(person);
+		
+		//personFrame
+		JLabel iconFrame = new JLabel();
+		iconFrame.setBounds(55,212,30,30);
+		iconFrame.setOpaque(true);
+		iconFrame.setBackground(Color.decode("#D9C943"));
+		login.add(iconFrame);
 		
 		//Contraseña
-		JLabel pwd = new JLabel("Contraseña:");
-		pwd.setBounds(200,220,180,40);
-		pwd.setFont(new Font("Agency FB",Font.BOLD,25));
+		JLabel pwd = new JLabel("Enter Your Password:");
+		pwd.setBounds(100,260,180,40);
+		pwd.setFont(new Font("Agency FB",Font.BOLD,20));
+		pwd.setForeground(Color.white);
 		login.add(pwd);
 		
 		//Campo para la contraseña
 		JPasswordField typePwd = new JPasswordField();
-		typePwd.setBounds(100,260,300,35);
+		typePwd.setBounds(100,300,300,35);
 		typePwd.setFont(new Font ("Agency FB", Font.BOLD, 25));
 		login.add(typePwd);
 		
-		//Checkbox 
-		JCheckBox remindMe = new JCheckBox("Recordarme");
-		remindMe.setBounds(100,320,110,30);
-		remindMe.setFont(new Font ("Agency FB", Font.BOLD, 20));
-		remindMe.setOpaque(false);
-		login.add(remindMe);
+		//Locker icon
+		JLabel locker = new JLabel();
+		locker.setIcon(new ImageIcon(getClass().getResource("candado.png")));
+		locker.setBounds(60, 305, 20, 20);
+		login.add(locker);
 		
-		//Olvido de contraseña
-		JLabel fogotPwd = new JLabel("¿Olvidó su contraseña?");
-		fogotPwd.setBounds(260,315,180,40);
-		fogotPwd.setFont(new Font ("Agency FB", Font.BOLD, 20));
-		login.add(fogotPwd);
+		//lockerFrame
+		JLabel lockerFrame = new JLabel();
+		lockerFrame.setBounds(55,300,30,30);
+		lockerFrame.setOpaque(true);
+		lockerFrame.setBackground(Color.decode("#D9C943"));
+		login.add(lockerFrame);
 		
 		//Boton de acceso
-		JButton accessButton = new JButton("Acceder");
+		JButton accessButton = new JButton("Login");
 		accessButton.setBounds(160,370,170,50);
-		accessButton.setFont(new Font("Agency FB",Font.BOLD,30));
+		accessButton.setBackground(Color.decode("#D9C943"));
+		accessButton.setFont(new Font("Segoe UI Black",Font.BOLD,25));
 		login.add(accessButton);
+		
+		
+		//Don´t have an account?
+		JLabel questionAcc = new JLabel("Don´t have an account?",0);
+		questionAcc.setBounds(155,450,180,40);
+		questionAcc.setFont(new Font("Agency FB",Font.BOLD,20));
+		questionAcc.setForeground(Color.white);
+		login.add(questionAcc);
+		
+		//Sign Up
+		JButton signUp = new JButton("Sign Up");
+		signUp.setBounds(165,495,160,40);
+		signUp.setBackground(Color.decode("#D9C943"));
+		signUp.setFont(new Font("Segoe UI Black",Font.BOLD,20));
+		login.add(signUp);
+		
+		//Recuadro
+		JLabel frame = new JLabel();
+		frame.setSize(450,350 );
+		frame.setOpaque(true);
+		frame.setBackground(Color.decode("#22396c"));
+		frame.setLocation(25,100);
+		login.add(frame);
 		
 		this.add(login);
 	}
