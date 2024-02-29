@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -30,7 +31,7 @@ public class Ventana extends JFrame{
 	public Ventana() {
 		
 	
-		this.setSize(520,600);
+		this.setSize(520,720);
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -38,7 +39,7 @@ public class Ventana extends JFrame{
 				
 		this.setResizable(true);
 		
-		this.setTitle("Mi ventana");
+		this.setTitle("Calculando el interes");
 		
 		this.setMinimumSize(new Dimension(250,250));
 		
@@ -68,8 +69,129 @@ public class Ventana extends JFrame{
 		
 		//this.admin()
 		
-		this.calculadora();
+		//this.calculadora();
+		this.interestRate();
 ;		this.repaint();
+	}
+	
+	public void interestRate() {
+		
+		JPanel panel = new JPanel();
+		panel.setSize(this.getWidth(),this.getHeight());
+		panel.setBackground(Color.white);
+		panel.setLayout( new BorderLayout());
+		
+		//GreenPanel
+		JLabel greenPanel = new JLabel();
+		greenPanel.setOpaque(true);
+		greenPanel.setPreferredSize(new Dimension(200,300));
+		greenPanel.setBackground(Color.GREEN);
+		greenPanel.setFont(new Font ("calibri",Font.BOLD,30));
+		greenPanel.setBorder(BorderFactory.createLineBorder(Color.white,35));
+		panel.add(greenPanel, BorderLayout.CENTER);
+		
+		//PinkPanel
+		JLabel pinkPanel = new JLabel();
+		pinkPanel.setOpaque(true);
+		pinkPanel.setPreferredSize(new Dimension(200,300));
+		pinkPanel.setBackground(Color.PINK);
+		pinkPanel.setBorder(BorderFactory.createLineBorder(Color.white,35));
+		panel.add(pinkPanel, BorderLayout.SOUTH);
+		
+		//CalculateInterest Label
+		JLabel calculateInterest = new JLabel("Calcular interés: ");
+		calculateInterest.setBounds(50,25,180,40);
+		calculateInterest.setFont(new Font ("Arial", Font.BOLD, 15));
+		greenPanel.add(calculateInterest);
+		
+		//Capital Label
+		JLabel capital = new JLabel("Capital: ");
+		capital.setBounds(50,80,180,40);
+		capital.setFont(new Font ("Agency FB", Font.BOLD, 20));
+		capital.setForeground(Color.black);
+		greenPanel.add(capital);
+		
+		//TypeCapital Field
+		JTextField typeCapital = new JTextField();
+		typeCapital.setBounds(170,90,200,25);
+		typeCapital.setOpaque(true);
+		typeCapital.setBackground(Color.white);
+		greenPanel.add(typeCapital);
+		
+		//Time Field
+		JLabel time = new JLabel("Tiempo: ");
+		time.setBounds(50,140,180,40);
+		time.setFont(new Font ("Agency FB", Font.BOLD, 20));
+		time.setForeground(Color.black);
+		greenPanel.add(time);
+		
+		//TypeTime Field
+		JTextField typeTime = new JTextField();
+		typeTime.setBounds(170,150,200,25);
+		typeTime.setOpaque(true);
+		typeTime.setBackground(Color.white);
+		greenPanel.add(typeTime);
+		
+		//InterestRate Label
+		JLabel interestRate = new JLabel("Tasa de interés: ");
+		interestRate.setBounds(50,200,180,40);
+		interestRate.setFont(new Font ("Agency FB", Font.BOLD, 20));
+		interestRate.setForeground(Color.black);
+		greenPanel.add(interestRate);
+		
+		//TypeInterest Field
+		JTextField typeInterest = new JTextField();
+		typeInterest.setBounds(170,210,200,25);
+		typeInterest.setOpaque(true);
+		typeInterest.setBackground(Color.white);
+		greenPanel.add(typeInterest);
+		
+		//InterestText Label
+		JLabel interestText = new JLabel("Interés",2);
+		interestText.setFont(new Font ("calibri",Font.BOLD,30));
+		interestText.setForeground(Color.red);
+		panel.add(interestText, BorderLayout.NORTH);
+		
+		//Calculate Button
+		JButton calculate = new JButton("Calcular");
+		calculate.setBounds(100, 300, 150, 40);
+		greenPanel.add(calculate);
+		
+		//Cancell Button
+		JButton cancell = new JButton("Cancelar");
+		cancell.setOpaque(true);
+		cancell.setBounds(280, 300, 150, 40);
+		greenPanel.add(cancell);
+		
+		//Interest Label
+		JLabel interest = new JLabel("Interés: ");
+		interest.setBounds(50,80,180,40);
+		interest.setFont(new Font ("Agency FB", Font.BOLD, 20));
+		interest.setForeground(Color.black);
+		pinkPanel.add(interest);
+		
+		//TypeInterest2 Field
+		JTextField typeInterest2 = new JTextField();
+		typeInterest2.setBounds(170,90,200,25);
+		typeInterest2.setOpaque(true);
+		typeInterest2.setBackground(Color.white);
+		pinkPanel.add(typeInterest2);
+		
+		//Amount Label
+		JLabel Monto = new JLabel("Monto: ");
+		Monto.setBounds(50,140,180,40);
+		Monto.setFont(new Font ("Agency FB", Font.BOLD, 20));
+		Monto.setForeground(Color.black);
+		pinkPanel.add(Monto);
+		
+		//TypeAmount Field
+		JTextField typeAmount = new JTextField();
+		typeAmount.setBounds(170,150,200,25);
+		typeAmount.setOpaque(true);
+		typeAmount.setBackground(Color.white);
+		pinkPanel.add(typeAmount);
+		
+		this.add(panel);
 	}
 	
 	public void calculadora() {
