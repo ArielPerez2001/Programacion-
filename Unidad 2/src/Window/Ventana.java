@@ -40,7 +40,7 @@ public class Ventana extends JFrame{
 		this.setSize(920,720);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocation(200,200);
-		this.setResizable(true);
+		this.setResizable(false);
 		this.setTitle("Calculando el interes");
 		this.setMinimumSize(new Dimension(250,250));
 		this.setMaximumSize(new Dimension(1000,750));
@@ -65,40 +65,98 @@ public class Ventana extends JFrame{
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
 		
-		//Asignamos un color
-		g2d.setColor(Color.blue);
+		//Fondo
+		g2d.setColor(Color.decode("#43CCF4"));
+		g2d.fillRect(0, 0, 920, 720);
+		
+		//Cerco tablas horizontales
+		g2d.setColor(Color.decode("#EFA840"));
+        for (int y = 473; y <= 565; y+=30) {
+            for (int x = 0; x <= 920; x+=50) {
+                g2d.fillRect(x, y, 30, 5); 
+            }
+        }
+        //Cerco tablas verticales
+        g2d.setColor(Color.decode("#CCA25A"));
+        for (int x = 30; x <= 920; x += 50) { 
+            for (int y = 460; y <= 565; y += 30) { 
+                g2d.fillRect(x, y, 20, 60); 
+            }
+        }
+
+		//Asignamos un color a la casa
+		g2d.setColor(Color.decode("#D9C16A"));
+		
 		//Creamos un rectangulo
-		g2d.fillRect(50, 50, 200, 100);
-		//Se crea una zona "limpia"
-		g2d.clearRect(100, 100, 100, 100);
-		//Se pinta un arco como en marco
-		g2d.fillArc(300, 300, 100, 100, 45, 180);
-		//Pintar linea
-		g2d.drawLine(0, 0, 500, 500);
-		//Pintar un ovalo
-		g2d.drawOval(400, 400, 50, 80);
-		//Pintar un ovalo relleno
-		g2d.fillOval(350, 400, 50, 80);
+		g2d.fillRect(250, 320, 400, 250);
 		
-		//Asignamos los puntos en X y Y
-		int xPoints[] = {100,250,300};
-		int yPoints[] = {100,200,300};
+		//Poligono o techo de la casa
 		
+		int xPoints[] = {200,720,350};
+		int yPoints[] = {320,320,100};
+		
+		g2d.setColor(Color.red.darker());		
 		g2d.fillPolygon(xPoints,yPoints,3);
 		
-		g2d.setStroke(new BasicStroke(10));
+		//Pasto verde oscuro
+		g2d.setColor(Color.green.darker().darker());
+		g2d.fillRect(0, 570, 920, 20);
 		
-		g2d.drawRoundRect(400, 600, 200, 100, 10, 10);
+		//Pasto verde lima
+		g2d.setColor(Color.green.darker());
+		g2d.fillRect(0, 590, 920, 40);
 		
-		try {
-			BufferedImage image = ImageIO.read(new File("src/Minimi.png"));
-			
-			g2d.drawImage(image, 0, 0, null);
-			
-		} catch(IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		//Tierra beige
+		g2d.setColor(Color.decode("#C2AD61"));
+		g2d.fillRect(0, 630, 920, 40);
+		
+		//Tierra oscura
+		g2d.setColor(Color.decode("#5B4E20"));
+		g2d.fillRect(0, 670, 920, 45);
+		
+		//Primeras lineas en la casa
+		g2d.setColor(Color.decode("#5B4E20"));
+        for (int y = 370; y <= 565; y += 35) {
+            for (int x = 250; x <= 620; x += 10) {
+                g2d.fillRect(x, y, 30, 5); // Tablas horizontales
+            }
+        }
+       
+        //Marco de la puerta
+        g2d.setStroke(new BasicStroke(6));
+		g2d.setColor(Color.decode("#5B4E20"));
+        g2d.drawRoundRect(280, 370, 100, 200, 10, 10);
+        
+        //Color interior de la puerta
+        g2d.setColor(Color.decode("#B28B01"));
+        g2d.fillRect(283, 373, 95, 195);
+        
+        //Manija de la puerta
+        g2d.setColor(Color.white);
+      	g2d.fillOval(360, 480, 10, 10);
+      	
+      	//Marco de la ventana
+      	 g2d.setStroke(new BasicStroke(6));
+      	 g2d.setColor(Color.red.darker());
+         g2d.drawRoundRect(520, 370, 100, 100, 10, 10);
+         
+         //Ventana en blanco
+         g2d.clearRect(523, 373, 95, 95);
+         
+         //Division de la ventana
+ 		 for(int y = 373; y<= 473;y++) {
+ 			g2d.setColor(Color.red.darker());
+ 	 		g2d.fillRect(567, 373, 7, 100);
+ 	 			for(int x = 523; x <= 600;x++) {
+ 	 				g2d.setColor(Color.red.darker());
+ 	 				g2d.fillRect(523, 420, 100, 5);
+ 	 			}
+ 		 	}
+ 		 //Base de la ventana
+ 		g2d.setColor(Color.gray.darker());
+        g2d.fillRect(510, 473, 120, 20);
+        
+        
 	}
 	
 	
