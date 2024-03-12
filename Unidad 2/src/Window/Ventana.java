@@ -56,7 +56,7 @@ public class Ventana extends JFrame{
 	//Metodo iniciar los componentes del panel
 	public void iniciarComponentes() {
 		this.login();
-		//this.registro();
+		this.registro();
 		//this.calculoInteres();
 		//this.calculadora();
 		this.repaint();
@@ -72,74 +72,74 @@ public class Ventana extends JFrame{
 			register_tag.setSize(300, 80);
 			register_tag.setFont(new Font ("Arial",Font.BOLD,24));
 			register_tag.setForeground(Color.black);
-			register_tag.setLocation(600, 20);
+			register_tag.setLocation(780, 20);
 			register_tag.setOpaque(true);//Fondo a la etiqueta
 			register_tag.setBackground(Color.orange);
 			registro.add(register_tag);
 
 			//Registro de usuario
 			JLabel userName = new JLabel(" Nombre de usuario:");
-			userName.setBounds(660,120,180,40);
+			userName.setBounds(860,120,180,40);
 			userName.setFont(new Font ("Agency FB", Font.BOLD, 25));
 			registro.add(userName);
 
 			JTextField userField = new JTextField();
-			userField.setBounds(650, 159, 180, 40);
+			userField.setBounds(845, 159, 180, 40);
 			userField.setFont(new Font("Arial",Font.BOLD,20));
 			userField.setOpaque(true);
 			userField.setBackground(Color.white);
 			registro.add(userField);
 
 			JLabel bioTag = new JLabel("Biografia",0);
-			bioTag.setBounds(540, 209, 400, 40);
+			bioTag.setBounds(730, 209, 400, 40);
 			bioTag.setFont(new Font("Arial",Font.BOLD,20));
 			registro.add(bioTag);
 
 			JTextArea bioText = new JTextArea();
-			bioText.setBounds(540, 250, 400, 80);
+			bioText.setBounds(740, 250, 400, 80);
 			bioText.setFont(new Font("Arial",Font.BOLD,20));
 			registro.add(bioText);
 
 			JLabel pref = new JLabel("Preferencias",0);
-			pref.setBounds(540, 330, 400, 40);
+			pref.setBounds(730, 330, 400, 40);
 			pref.setFont(new Font("Arial",Font.BOLD,20));
 			registro.add(pref);
 
 			JCheckBox itemBox = new JCheckBox("Papas");
-			itemBox.setBounds(530, 360, 90, 40);
+			itemBox.setBounds(750, 360, 90, 40);
 			itemBox.setFont(new Font("Arial",Font.BOLD,18));
 			itemBox.setOpaque(false);
 			itemBox.setBackground(Color.magenta);
 			registro.add(itemBox);
 
 			JCheckBox itemBox2 = new JCheckBox("Dulces");
-			itemBox2.setBounds(690, 360, 100, 40);
+			itemBox2.setBounds(880, 360, 100, 40);
 			itemBox2.setFont(new Font("Arial",Font.BOLD,18));
 			itemBox2.setOpaque(false);
 			registro.add(itemBox2);
 
 			JCheckBox itemBox3 = new JCheckBox("Refresco");
-			itemBox3.setBounds(850, 360, 130, 40);
+			itemBox3.setBounds(1000, 360, 130, 40);
 			itemBox3.setFont(new Font("Arial",Font.BOLD,18));
 			itemBox3.setOpaque(false);
 			registro.add(itemBox3);
 
 			JLabel termsTag = new JLabel("Terminos",0);
-			termsTag.setBounds(690, 410, 100, 40);
+			termsTag.setBounds(880, 410, 100, 40);
 			termsTag.setFont(new Font("Arial",Font.BOLD,20));
 			termsTag.setOpaque(false);
 			termsTag.setBackground(Color.red);
 			registro.add(termsTag);
 
 			JRadioButton acceptRadio = new JRadioButton("Acepto los terminos");
-			acceptRadio.setBounds(530, 450, 220, 40);
+			acceptRadio.setBounds(670, 450, 220, 40);
 			acceptRadio.setFont(new Font("Arial",Font.BOLD,16));
 			acceptRadio.setOpaque(false);
 			acceptRadio.setBackground(Color.red);
 			registro.add(acceptRadio);
 
 			JRadioButton noAcceptRadio = new JRadioButton("No acepto los terminos");
-			noAcceptRadio.setBounds(780, 450, 220, 40);
+			noAcceptRadio.setBounds(1000, 450, 220, 40);
 			noAcceptRadio.setFont(new Font("Arial",Font.BOLD,16));
 			noAcceptRadio.setOpaque(false);
 			noAcceptRadio.setBackground(Color.red);
@@ -152,12 +152,12 @@ public class Ventana extends JFrame{
 			String colony[] = {"Centro","Camino real","Ayuntamiento"};
 
 			JComboBox locations = new JComboBox(colony);
-			locations.setBounds(560, 500, 350, 40);
+			locations.setBounds(750, 500, 350, 40);
 			locations.setFont(new Font("Arial",Font.BOLD,19));
 			registro.add(locations);
 
 			JButton registerButton = new JButton("Crear cuenta");
-			registerButton.setBounds(650, 620, 200, 40);
+			registerButton.setBounds(820, 620, 200, 40);
 			registerButton.setFont(new Font("Arial",Font.BOLD,19));
 			registro.add(registerButton);
 			
@@ -200,7 +200,7 @@ public class Ventana extends JFrame{
 		}
 	public void login() {
 		JPanel login = new JPanel();
-		login.setSize(this.getWidth(),this.getHeight());
+		login.setSize(this.getWidth()/2,this.getHeight());
 		login.setBackground(Color.decode("#30508f"));
 		login.setLayout(null);
 
