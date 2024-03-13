@@ -11,6 +11,8 @@ import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -29,6 +31,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -37,7 +40,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class Ventana extends JFrame{
+public class Ventana extends JFrame implements MouseListener{
 	
 	public Ventana() {
 
@@ -50,6 +53,7 @@ public class Ventana extends JFrame{
 		this.setMaximumSize(new Dimension(1000,750));
 		this.setLocationRelativeTo(null);
 		this.iniciarComponentes();
+		this.addMouseListener(null);
 		this.setLayout(null);
 		this.setVisible(true);
 	}
@@ -378,7 +382,7 @@ public class Ventana extends JFrame{
 				
 				Color randColor = new Color(r,g,b);
 				
-				JButton other_btn = new JButton("Clic me");	
+				JButton other_btn = new JButton(r+""+g+""+b);	
 				other_btn.setBounds(x,y,w,h);	
 				other_btn.setOpaque(true);
 				other_btn.setBackground(randColor);
@@ -386,6 +390,17 @@ public class Ventana extends JFrame{
 				
 				getContentPane().repaint();
 				getContentPane().revalidate();
+				
+				other_btn.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						String command = ((JButton)e.getSource()).getActionCommand();
+						JOptionPane.showMessageDialog(null, command);
+					}
+					
+				});
 			}
 			
 		});
@@ -652,8 +667,38 @@ public class Ventana extends JFrame{
 		}
 	
 	}/*/
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 	
-	/*public void calculadora() {
+	public void calculadora() {
 		this.setSize(500,650);
 
 		//Panel
@@ -825,5 +870,5 @@ public class Ventana extends JFrame{
 		pnlResultados.add(txtMonto);
 		
 		this.add(pnlPrincipal);
-	}/*/
+	}
 }
