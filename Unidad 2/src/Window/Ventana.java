@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -55,14 +56,15 @@ public class Ventana extends JFrame{
 	
 	//Metodo iniciar los componentes del panel
 	public void iniciarComponentes() {
-		this.login();
-		this.registro();
+		//this.login();
+		//this.registro();
+		this.botones();
 		//this.calculoInteres();
 		//this.calculadora();
 		this.repaint();
 	}
 	//Metodo del registro
-		public void registro() {
+	public void registro() {
 			JPanel registro = new JPanel();
 			registro.setSize(this.getWidth(),this.getHeight());
 			registro.setBackground(Color.cyan);
@@ -336,6 +338,59 @@ public class Ventana extends JFrame{
 		this.add(login);
 	}
 	
+	public void botones() {
+		
+		//Panel
+		this.setSize(500,750);
+		JPanel btn_panel = new JPanel();
+		btn_panel.setLocation(0, 0);
+		btn_panel.setSize(this.getWidth(),this.getHeight());
+		btn_panel.setOpaque(true);
+		btn_panel.setBackground(Color.decode("#30508f"));
+		btn_panel.setLayout(null);
+		
+		//
+		JButton rgs_btn = new JButton("Clic me");		
+		rgs_btn.setFont(new Font("Agency FB",Font.BOLD,40));		
+		rgs_btn.setForeground(Color.black);	
+		rgs_btn.setBounds(50, 530, 400, 70);	
+		rgs_btn.setBackground(Color.white);	
+		btn_panel.add(rgs_btn);
+		
+		rgs_btn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				//Otro boton
+				
+				int x = (int)Math.floor(Math.random()*450+1);
+				int y = (int)Math.floor(Math.random()*650+1);
+				
+				int w = (int)Math.floor(Math.random()*120+1);
+				int h = (int)Math.floor(Math.random()*120+1);
+				
+				Random rand = new Random();
+				float r = rand.nextFloat();		
+				float g = rand.nextFloat();	
+				float b = rand.nextFloat();	
+				
+				Color randColor = new Color(r,g,b);
+				
+				JButton other_btn = new JButton("Clic me");	
+				other_btn.setBounds(x,y,w,h);	
+				other_btn.setOpaque(true);
+				other_btn.setBackground(randColor);
+				btn_panel.add(other_btn);
+				
+				getContentPane().repaint();
+				getContentPane().revalidate();
+			}
+			
+		});
+		this.add(btn_panel);
+	}
 	//Graficos
 	/*@Override
 	public void paint(Graphics g) {
