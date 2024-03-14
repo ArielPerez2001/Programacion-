@@ -464,7 +464,15 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub	
+		// TODO Auto-generated method stub
+		//Ejercicio 11
+		Random rand = new Random();
+		float r = rand.nextFloat();		
+		float g = rand.nextFloat();	
+		float b = rand.nextFloat();	
+		
+		Color randColor = new Color(r,g,b);
+		btn_panel.setBackground(randColor);	
 		
 	}
 
