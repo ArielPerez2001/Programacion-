@@ -11,6 +11,8 @@ import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -40,7 +42,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class Ventana extends JFrame implements MouseListener{
+public class Ventana extends JFrame implements MouseListener, KeyListener{
 	JPanel btn_panel = new JPanel();
 	public Ventana() {
 
@@ -54,6 +56,7 @@ public class Ventana extends JFrame implements MouseListener{
 		this.setLocationRelativeTo(null);
 		this.iniciarComponentes();
 		addMouseListener(this);
+		addKeyListener(this);
 		this.setLayout(null);
 		this.setVisible(true);
 	}
@@ -395,8 +398,15 @@ public class Ventana extends JFrame implements MouseListener{
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// TODO Auto-generated method stub
-						String command = ((JButton)e.getSource()).getActionCommand();
-						JOptionPane.showMessageDialog(null, command);
+						//Ejercicio 10
+						JButton yo = ((JButton)e.getSource());
+						btn_panel.remove(yo);
+						
+						getContentPane().repaint();
+						getContentPane().revalidate();
+						
+						/*String command = ((JButton)e.getSource()).getActionCommand();
+						/*JOptionPane.showMessageDialog(null, command);/*/
 						
 					}
 				});
@@ -438,8 +448,8 @@ public class Ventana extends JFrame implements MouseListener{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				
-				JOptionPane.showMessageDialog(null, r + "," + g + "," + b, "Codigo",JOptionPane.WARNING_MESSAGE);
-				
+				/*JOptionPane.showMessageDialog(null, r + "," + g + "," + b, "Codigo",JOptionPane.WARNING_MESSAGE);
+				/*/
 			}
 	});
 		btn_panel.add(other_btn);
@@ -454,7 +464,7 @@ public class Ventana extends JFrame implements MouseListener{
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub	
 		
 	}
 
@@ -897,5 +907,23 @@ public class Ventana extends JFrame implements MouseListener{
 		pnlResultados.add(txtMonto);
 		
 		this.add(pnlPrincipal);
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		//Ejercicio 12
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
