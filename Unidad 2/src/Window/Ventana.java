@@ -41,7 +41,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class Ventana extends JFrame implements MouseListener{
-	
+	JPanel btn_panel = new JPanel();
 	public Ventana() {
 
 		this.setSize(1250,750);
@@ -53,7 +53,7 @@ public class Ventana extends JFrame implements MouseListener{
 		this.setMaximumSize(new Dimension(1000,750));
 		this.setLocationRelativeTo(null);
 		this.iniciarComponentes();
-		this.addMouseListener(null);
+		addMouseListener(this);
 		this.setLayout(null);
 		this.setVisible(true);
 	}
@@ -346,7 +346,6 @@ public class Ventana extends JFrame implements MouseListener{
 		
 		//Panel
 		this.setSize(500,750);
-		JPanel btn_panel = new JPanel();
 		btn_panel.setLocation(0, 0);
 		btn_panel.setSize(this.getWidth(),this.getHeight());
 		btn_panel.setOpaque(true);
@@ -398,13 +397,71 @@ public class Ventana extends JFrame implements MouseListener{
 						// TODO Auto-generated method stub
 						String command = ((JButton)e.getSource()).getActionCommand();
 						JOptionPane.showMessageDialog(null, command);
+						
 					}
-					
 				});
 			}
 			
 		});
 		this.add(btn_panel);
+	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		int x = (int)Math.floor(Math.random()*450+1);
+		int y = (int)Math.floor(Math.random()*650+1);
+		
+		int w = (int)Math.floor(Math.random()*120+1);
+		int h = (int)Math.floor(Math.random()*120+1);
+		
+		Random rand = new Random();
+		float r = rand.nextFloat();		
+		float g = rand.nextFloat();	
+		float b = rand.nextFloat();	
+		
+		Color randColor = new Color(r,g,b);
+		
+		JButton other_btn = new JButton(r+""+g+""+b);	
+		other_btn.setBounds(x,y,w,h);	
+		other_btn.setOpaque(true);
+		other_btn.setBackground(randColor);
+		
+		other_btn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				JOptionPane.showMessageDialog(null, r + "," + g + "," + b, "Codigo",JOptionPane.WARNING_MESSAGE);
+				
+			}
+	});
+		btn_panel.add(other_btn);
+		getContentPane().repaint();
+		
+}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	//Graficos
 	/*@Override
@@ -667,36 +724,6 @@ public class Ventana extends JFrame implements MouseListener{
 		}
 	
 	}/*/
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	public void calculadora() {
 		this.setSize(500,650);
