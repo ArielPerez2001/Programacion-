@@ -2,6 +2,7 @@ package Window;
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -356,11 +357,13 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 		btn_panel.setLayout(null);
 		
 		//
+		
 		JButton rgs_btn = new JButton("Clic me");		
 		rgs_btn.setFont(new Font("Agency FB",Font.BOLD,40));		
 		rgs_btn.setForeground(Color.black);	
 		rgs_btn.setBounds(50, 530, 400, 70);	
 		rgs_btn.setBackground(Color.white);	
+		rgs_btn.setFocusable(false);
 		btn_panel.add(rgs_btn);
 		
 		rgs_btn.addActionListener(new ActionListener() {
@@ -413,6 +416,7 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 			}
 			
 		});
+		
 		this.add(btn_panel);
 	}
 	@Override
@@ -478,6 +482,34 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 
 	@Override
 	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		//Ejercicio 12
+		System.out.println(e.getKeyCode() + " " + e.getKeyChar());
+		
+		if(e.getKeyCode() == KeyEvent.VK_DELETE) {
+			
+			btn_panel.removeAll();
+			getContentPane().repaint();	
+			getContentPane().revalidate();	
+			
+		}
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -917,21 +949,5 @@ public class Ventana extends JFrame implements MouseListener, KeyListener{
 		this.add(pnlPrincipal);
 	}
 
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		//Ejercicio 12
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }
